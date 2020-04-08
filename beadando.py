@@ -1,7 +1,7 @@
 import re
 
 
-# bemenet = 'domosi123{}}123domosi123:=(**)<>1domosi1'
+# bemenet = 'domosi123{}123domosi123:=(**)<>1domosi1'
 
 
 class InvalidTokenError(Exception):
@@ -82,4 +82,4 @@ while (len(bemenet) != 0):
     else:
         raise InvalidTokenError(start, eredeti_hossz - len(bemenet) + 1)
 
-print(final)
+print(*final, sep=' ')
