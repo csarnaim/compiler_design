@@ -5,11 +5,17 @@ import re
 
 
 class InvalidTokenError(Exception):
-    def __init__(self, expression):
+    def __init__(self, expression, position):
         self.expression = expression
+        self.position = position
+
+    def __str__(self):
+        return f'Értelmezhetetlen karakter {self.expression} a következő helyen {self.position}'
 
 
 bemenet = input("Kérem az elemzendő szöveget: ")
+
+eredeti_hossz = len(bemenet)
 
 azonosito = re.compile('[a-zA-Z]+[a-zA-Z0-9]*')
 konstans = re.compile('[0-9]+')
@@ -74,6 +80,6 @@ while (len(bemenet) != 0):
             bemenet = bemenet[vag[1]:]
 
     else:
-        raise InvalidTokenError(start)
+        raise InvalidTokenError(start, eredeti_hossz - len(bemenet) + 1)
 
 print(final)
