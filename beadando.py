@@ -1,6 +1,13 @@
 import re
 
+
 # bemenet = 'domosi123{}}123domosi123:=(**)<>1domosi1'
+
+
+class InvalidTokenError(Exception):
+    def __init__(self, expression):
+        self.expression = expression
+
 
 bemenet = input("Kérem az elemzendő szöveget: ")
 
@@ -67,8 +74,6 @@ while (len(bemenet) != 0):
             bemenet = bemenet[vag[1]:]
 
     else:
-        final.append(start)
-        bemenet = bemenet[1:]
-        continue
+        raise InvalidTokenError(start)
 
 print(final)
