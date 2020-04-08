@@ -1,7 +1,8 @@
 import re
 
-# domosi123{}}123domosi123:=(*)<>1domosi1
-bemenet = 'domosi123{}}123domosi123:=(**)<>1domosi1'
+# bemenet = 'domosi123{}}123domosi123:=(**)<>1domosi1'
+
+bemenet = input("Kérem az elemzendő szöveget: ")
 
 azonosito = re.compile('[a-zA-Z]+[a-zA-Z0-9]*')
 konstans = re.compile('[0-9]+')
